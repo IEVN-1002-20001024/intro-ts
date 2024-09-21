@@ -1,23 +1,20 @@
-export class Punto {
+export class Distance {
+    puntox_1: number;
+    puntoy_1: number;
+    puntox_2: number;
+    puntoy_2: number;
 
-    private x: number;
-    private y: number;
-
-    constructor(x: number, y: number) {
-        this.x = x;
-        this.y = y;
+    constructor(puntox_1: number, puntoy_1: number, puntox_2: number, puntoy_2: number) {
+        this.puntox_1 = puntox_1;
+        this.puntoy_1 = puntoy_1;
+        this.puntox_2 = puntox_2;
+        this.puntoy_2 = puntoy_2;
     }
-    public calcularDistancia(otroPunto: Punto): number {
-        //  d = √((x2 - x1)^2 + (y2 - y1)^2)
-        const distanciaX = otroPunto.x - this.x;
-        const distanciaY = otroPunto.y - this.y;
-        return Math.sqrt(distanciaX * distanciaX + distanciaY * distanciaY);
+
+    calculate(): number {
+        return Math.sqrt(Math.pow((this.puntox_2 - this.puntox_1), 2) + Math.pow((this.puntoy_2 - this.puntoy_1), 2));
     }
 }
 
-const punto1 = new Punto(3, 4);
-const punto2 = new Punto(7, 1);
-
-const distancia = punto1.calcularDistancia(punto2);
-
-console.log(`La distancia entre los puntos es: ${distancia}`);
+ const distance = new Distance(1, 1, 10, 10);
+ console.log(distance.calculate());
